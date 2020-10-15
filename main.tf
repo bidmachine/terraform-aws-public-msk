@@ -3,7 +3,7 @@ data "aws_msk_cluster" "cluster" {
 }
 
 locals {
-  addrs = split(",", data.aws_msk_cluster.cluster.bootstrap_brokers_tls)
+  addrs = split(",", data.aws_msk_cluster.cluster.bootstrap_brokers)
   hosts = toset([for x in local.addrs : split(":", x)[0]])
 }
 
